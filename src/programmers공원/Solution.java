@@ -1,4 +1,6 @@
-public class Programmers_공원 {
+package programmers공원;
+
+public class Solution {
     public int solution(int[] mats, String[][] park) {
         int answer = -1;
         for (int mat : mats) {
@@ -33,7 +35,7 @@ public class Programmers_공원 {
     }
 
     public static void main(String[] args) {
-        Programmers_공원 solution = new Programmers_공원();
+        Solution solution = new Solution();
         String[][] park = {{"A", "A", "-1", "B", "B", "B", "B", "-1"}, {"A", "A", "-1", "B", "B", "B", "B", "-1"}, {"-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1"}, {"D", "D", "-1", "-1", "-1", "-1", "E", "-1"}, {"D", "D", "-1", "-1", "-1", "-1", "-1", "F"}, {"D", "D", "-1", "-1", "-1", "-1", "E", "-1"}};
         int[] mats = {5,3,2};
 
