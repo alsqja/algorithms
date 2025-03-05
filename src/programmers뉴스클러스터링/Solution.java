@@ -1,14 +1,12 @@
 package programmers뉴스클러스터링;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Solution {
     public int solution(String str1, String str2) {
-        List<String> sum = new ArrayList<>();
-        List<String> both = new ArrayList<>();
+        int sum = 0;
+        int both = 0;
 
         Map<String, Integer> map1 = new HashMap<>();
         Map<String, Integer> map2 = new HashMap<>();
@@ -26,35 +24,27 @@ public class Solution {
                 int max = Math.max(count1, count2);
                 int min = Math.min(count1, count2);
 
-                for (int i = 0; i < max; i++) {
-                    sum.add(key);
-                }
-                for (int i = 0; i < min; i++) {
-                    both.add(key);
-                }
+                sum += max;
+                both += min;
             } else {
-                for (int i = 0; i < map1.get(key); i++) {
-                    sum.add(key);
-                }
+                sum += map1.get(key);
             }
         }
 
         for (String key : map2.keySet()) {
             if (!map1.containsKey(key)) {
-                for (int i = 0; i < map2.get(key); i++) {
-                    sum.add(key);
-                }
+                sum += map2.get(key);
             }
         }
 
         System.out.println(sum);
         System.out.println(both);
 
-        if (sum.isEmpty()) {
+        if (sum == 0) {
             return 65536;
         }
 
-        return (int) ((double) both.size() / (double) sum.size() * 65536);
+        return (int) ((double) both / (double) sum * 65536);
     }
 
     private void makeMap(String str, Map<String, Integer> map) {
@@ -64,9 +54,7 @@ public class Solution {
             }
         }
     }
-
-    public static void main(String[] args) {
-        Solution solution = new Solution();
-        System.out.println(solution.solution("ABABAB", "BABABA"));
-    }
 }
+
+
+//  3.25ms -> 1.99ms
